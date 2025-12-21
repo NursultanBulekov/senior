@@ -1,0 +1,39 @@
+import { LitElement, css, html } from 'lit';
+import { customElement } from 'lit/decorators.js';
+
+import './pages/app-home';
+import './components/header';
+import './components/navigation';
+import './styles/global.css';
+import { router } from './router';
+
+@customElement('app-index')
+export class AppIndex extends LitElement {
+  static styles = css`
+    main {
+      padding-left: 16px;
+      padding-right: 16px;
+      padding-bottom: 16px;
+    }
+  `;
+
+  firstUpdated() {
+    router.addEventListener('route-changed', () => {
+      if ("startViewTransition" in document) {
+        (document as any).startViewTransition(() => this.requestUpdate());
+      }
+      else {
+        this.requestUpdate();
+      }
+    });
+  }
+
+render() {
+  return html`
+    <app-navigation></app-navigation>
+    <main>
+      ${router.render()}
+    </main>
+  `;
+}
+}
