@@ -24,7 +24,7 @@ export default function BottomTabs() {
       <Tab.Screen name="About" component={AboutScreen} />
       <Tab.Screen name="Pcs" component={PcScreen} />
       <Tab.Screen name="Sensors" component={SensorScreen} />
-      <Tab.Screen name="Dashboard" component={DashboardScreen} />
+      <Tab.Screen name="Dashboards" component={DashboardScreen} />
     </Tab.Navigator>
   );
 }
